@@ -3,9 +3,20 @@ import { Message, OpenAIStream, StreamingTextResponse } from 'ai'
 import { getContext } from '@/utils/context'
 
 // Create an OpenAI API client (that's edge friendly!)
+// const config = new Configuration({
+//   apiKey: process.env.OPENAI_API_KEY
+// })
+
 const config = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY
-})
+  apiKey: process.env.OPENAI_API_KEY,
+  basePath: "https://oai.hconeai.com/v1",
+  baseOptions: {
+    headers: {
+      "Helicone-Property-App": "United-Talent",
+      "Helicone-Auth": "Bearer " + process.env.HELICONE_API_KEY
+    },
+  },
+});
 const openai = new OpenAIApi(config)
 
 // IMPORTANT! Set the runtime to edge

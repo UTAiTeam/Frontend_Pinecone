@@ -39,7 +39,7 @@ async function seed(url: string, limit: number, indexName: string, options: Seed
     const documents = await Promise.all(pages.map(page => prepareDocument(page, splitter)));
 
     // Create Pinecone index if it does not exist
-    await createIndexIfNotExists(pinecone!, indexName, 1536);
+    await createIndexIfNotExists(pinecone!, indexName, 756);
     const index = pinecone && pinecone.Index(indexName);
 
     // Get the vector embeddings for the documents
